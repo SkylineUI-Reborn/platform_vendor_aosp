@@ -241,6 +241,7 @@ PRODUCT_PACKAGES += \
     AndroidBlackThemeOverlay \
     CustomFontPixelLauncherOverlay \
     DocumentsUIOverlay \
+    NotchBarKillerOverlay \
     NetworkStackOverlay \
     NavigationBarNoHintOverlay \
     ThemedIconsOverlay
