@@ -253,7 +253,8 @@ PRODUCT_PACKAGES += \
     AndroidBlackThemeOverlay \
     CustomFontPixelLauncherOverlay \
     DocumentsUIOverlay \
-    NetworkStackOverlay
+    NetworkStackOverlay \
+    NotchBarKillerOverlay
 
 # TextClassifier
 PRODUCT_PACKAGES += \
