@@ -1,7 +1,7 @@
 function __print_custom_functions_help() {
 cat <<EOF
 Additional functions:
-- brunch:          Runs "breakfast" and "mka bacon" for the provided device target.
+- brunch:          Runs "breakfast" and "mka skyline" for the provided device target.
 - breakfast:       Wrapper for "lunch".
 - eat:             Reboots to recovery and installs the compiled OTA package.
 - omnom:           Runs "brunch" and "eat" for the provided device target.
