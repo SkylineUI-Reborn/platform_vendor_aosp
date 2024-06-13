@@ -1,23 +1,27 @@
+# Build Date
 CUSTOM_BUILD_DATE := $(shell date -u +%Y%m%d-%H%M)
 
-CUSTOM_PLATFORM_VERSION := 15.0
+# Type of Build
+CUSTOM_BUILD_TYPE ?= UNOFFICIAL
 
-CUSTOM_VERSION := PixelOS_$(CUSTOM_BUILD)-$(CUSTOM_PLATFORM_VERSION)-$(CUSTOM_BUILD_DATE)
+# Platform (Android Version)
+CUSTOM_PLATFORM_VERSION := 15
+
+SKYLINEUI_BUILD_VERSION := Power
+CUSTOM_VERSION := SkylineUI-$(SKYLINEUI_BUILD_VERSION)-$(CUSTOM_PLATFORM_VERSION)-$(CUSTOM_BUILD)-$(CUSTOM_BUILD_DATE)-$(CUSTOM_BUILD_TYPE)
 CUSTOM_VERSION_PROP := fifteen
 
-# PixelOS Platform Version
+# SkylineUI Platform Version
 PRODUCT_PRODUCT_PROPERTIES += \
     ro.custom.build.date=$(BUILD_DATE) \
     ro.custom.device=$(CUSTOM_BUILD) \
     ro.custom.fingerprint=$(ROM_FINGERPRINT) \
-    ro.custom.version=$(CUSTOM_VERSION)
-
-# Updater
-ifeq ($(IS_OFFICIAL),true)
-    PRODUCT_PRODUCT_PROPERTIES += \
-        net.pixelos.build_type=ci \
-        net.pixelos.version=$(CUSTOM_VERSION_PROP)
-endif
+    ro.custom.version=$(CUSTOM_VERSION) \
+    ro.modversion=$(CUSTOM_VERSION) \
+    org.skylineui.build_version=$(SKYLINEUI_BUILD_VERSION) \
+    org.skylineui.build_type=$(CUSTOM_BUILD_TYPE) \
+    org.skylineui.version.display=$(CUSTOM_VERSION) \
+    ro.skylineui.maintainer=$(SKYLINEUI_MAINTAINER)
 
 # Signing
 ifneq (eng,$(TARGET_BUILD_VARIANT))
