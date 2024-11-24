@@ -264,4 +264,9 @@ include vendor/aosp/config/version.mk
 # OTA
 $(call inherit-product, vendor/aosp/config/ota.mk)
 
+# Google Mobile Services flags
+TARGET_SUPPORTS_GOOGLE_RECORDER ?= true
+TARGET_INCLUDE_STOCK_ARCORE ?= true
+TARGET_INCLUDE_LIVE_WALLPAPERS ?= true
+
 -include $(WORKSPACE)/build_env/image-auto-bits.mk
