@@ -126,6 +126,7 @@ SOONG_CONFIG_customGlobalVars_target_power_libperfmgr_mode_extension_lib := $(TA
 SOONG_CONFIG_customGlobalVars_target_powershare_path := $(TARGET_POWERSHARE_PATH)
 SOONG_CONFIG_customGlobalVars_target_powershare_enabled := $(TARGET_POWERSHARE_ENABLED)
 SOONG_CONFIG_customGlobalVars_target_powershare_disabled := $(TARGET_POWERSHARE_DISABLED)
+SOONG_CONFIG_lineageQcomVars_no_fm_firmware := $(TARGET_QCOM_NO_FM_FIRMWARE)
 SOONG_CONFIG_customGlobalVars_target_surfaceflinger_udfps_lib := $(TARGET_SURFACEFLINGER_UDFPS_LIB)
 SOONG_CONFIG_customGlobalVars_target_trust_usb_control_path := $(TARGET_TRUST_USB_CONTROL_PATH)
 SOONG_CONFIG_customGlobalVars_target_trust_usb_control_enable := $(TARGET_TRUST_USB_CONTROL_ENABLE)
@@ -136,3 +137,18 @@ else
 SOONG_CONFIG_customQcomVars_qcom_display_headers_namespace := $(QCOM_SOONG_NAMESPACE)/display
 endif
 SOONG_CONFIG_customQcomVars_qti_vibrator_effect_lib := $(TARGET_QTI_VIBRATOR_EFFECT_LIB)
+
+# libfmjni
+ifeq ($(BOARD_HAVE_QCOM_FM),true)
+    PRODUCT_SOONG_NAMESPACES += \
+        vendor/qcom/opensource/libfmjni
+else ifeq ($(BOARD_HAVE_BCM_FM),true)
+    PRODUCT_SOONG_NAMESPACES += \
+        hardware/broadcom/fm
+else ifeq ($(BOARD_HAVE_SLSI_FM),true)
+    PRODUCT_SOONG_NAMESPACES += \
+        hardware/samsung_slsi/fm
+else ifneq ($(BOARD_HAVE_MTK_FM),true)
+    PRODUCT_SOONG_NAMESPACES += \
+        packages/apps/FMRadio/jni/fmr
+endif
