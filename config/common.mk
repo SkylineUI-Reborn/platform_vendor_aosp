@@ -283,4 +283,10 @@ include vendor/aosp/config/ota.mk
 PRODUCT_COPY_FILES += \
     vendor/aosp/config/permissions/privapp-permissions-custom.xml:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/permissions/privapp-permissions-custom.xml
 
+# Google Mobile Services flags
+TARGET_SUPPORTS_GOOGLE_RECORDER ?= true
+TARGET_INCLUDE_STOCK_ARCORE ?= true
+TARGET_INCLUDE_STOCK_AICORE ?= true
+TARGET_INCLUDE_LIVE_WALLPAPERS ?= true
+
 -include $(WORKSPACE)/build_env/image-auto-bits.mk
